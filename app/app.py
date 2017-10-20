@@ -21,7 +21,7 @@ SYSTEMD_PROJECT_B = 'yhook.service' # yhook的自启动服务名
 @app.route('/',methods=['POST','GET'])
 @app.route('/index',methods=['POST','GET'])
 @app.route('/learoom',methods=['POST','GET'])
-@app.route('/learoom/',methods=['POST','GET'])
+@app.route('/learoom/<anything='home'>',methods=['POST','GET'])
 def learoom():
 
     if request.method == "GET":
