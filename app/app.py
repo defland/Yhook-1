@@ -5,8 +5,8 @@ app = Flask(__name__)
 import commands,os
 
 # 全局变量
-PROJECT_PATH = '/Users/yg/Documents/code/Project/leanroom'
-
+DEV_PROJECT_PATH = '/Users/yg/Documents/code/Project/Yhook'
+WEB_PROJECT_PATH = '/home/yg/www/leanroom/'
 
 
 # 接受到消息
@@ -30,11 +30,18 @@ def pull_code():
     # git reset --hard
     # git pull
 
-    (status, output) = commands.getstatusoutput('cd %s ' % PROJECT_PATH)
+    comm = 'cd %s ' % DEV_PROJECT_PATH
+    (status, output) = commands.getstatusoutput(comm)
     print status, output
+    
+    (status, output) = commands.getstatusoutput('pwd')
+    print status, output
+    
     (status, output) = commands.getstatusoutput('git add . ')
     print status, output
-    (status, output) = commands.getstatusoutput('git commit -m "added:js"') 
+    
+
+    (status, output) = commands.getstatusoutput('git commit -m "added:test"') 
     print status, output
 
 
