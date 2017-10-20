@@ -31,7 +31,7 @@ def pull_code():
     # git reset --hard
     # git pull
 
-    comm = 'cd %s && git status && ls -l ' % D_PROJECT_PATH
+    comm = 'cd %s && ls -l && git status ' % D_PROJECT_PATH
     print comm
     (status, output) = commands.getstatusoutput(comm)
     print status, output
