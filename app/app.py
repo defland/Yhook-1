@@ -31,21 +31,20 @@ def pull_code():
     # git reset --hard
     # git pull
 
-    comm = 'cd %s && ls -l && git status ' % D_PROJECT_PATH
+    comm = 'cd %s && ls -l && git status && git reset --hard && git pull' % WEB_PROJECT_PATH
     print comm
     (status, output) = commands.getstatusoutput(comm)
     print status, output
     
-    (status, output) = commands.getstatusoutput('pwd')
-    print status, output
+    # (status, output) = commands.getstatusoutput('pwd')
+    # print status, output
     
-    (status, output) = commands.getstatusoutput('git add . ')
-    print status, output
+    # (status, output) = commands.getstatusoutput('git add . ')
+    # print status, output
     
 
-    (status, output) = commands.getstatusoutput('git commit -m "added:test"') 
-    print status, output
-
+    # (status, output) = commands.getstatusoutput('git commit -m "added:test"') 
+    # print status, output
 
 
 # 重启服务器
