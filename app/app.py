@@ -18,9 +18,9 @@ SYSTEMD_PROJECT_A = 'learoom.service' # web网站项目的自启动服务名称
 SYSTEMD_PROJECT_B = 'yhook.service' # yhook的自启动服务名
 
 # 负责项目A的消息接受,webhook的路径 域名:端口/learoom
-@app.route('/',methods=['POST','GET'])
-@app.route('/index',methods=['POST','GET'])
-@app.route('/learoom',methods=['POST','GET'])
+@app.route('/',methods=['POST','GET'],strict_slashes=False)
+@app.route('/index',methods=['POST','GET'],strict_slashes=False)
+@app.route('/learoom',methods=['POST','GET'],strict_slashes=False)
 def learoom():
 
     if request.method == "GET":
@@ -44,8 +44,8 @@ def learoom():
     return 'Receive successful' 
 
 # 负责项目B的消息接受
-@app.route('/yhook',methods=['POST','GET'])
-@app.route('/yhook/',methods=['POST','GET'])
+@app.route('/yhook',methods=['POST','GET'],strict_slashes=False)
+@app.route('/yhook/',methods=['POST','GET'],strict_slashes=False)
 def yhook():
 
     if request.method == "GET":
