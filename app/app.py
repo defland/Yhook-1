@@ -30,7 +30,7 @@ def pull_code():
     # git reset --hard
     # git pull
 
-    comm = 'cd %s ' % DEV_PROJECT_PATH
+    comm = 'cd %s && git status' % DEV_PROJECT_PATH
     print comm
     (status, output) = commands.getstatusoutput(comm)
     print status, output
