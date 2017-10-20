@@ -17,7 +17,7 @@ PROJECT_B_DEV_PATH = '/Users/yg/Documents/code/Project/Yhook'
 SYSTEMD_PROJECT_A = 'learoom.service' # web网站项目的自启动服务名称
 SYSTEMD_PROJECT_B = 'yhook.service' # yhook的自启动服务名
 
-# 负责项目A的消息接受
+# 负责项目A的消息接受,webhook的路径 域名:端口/learoom
 @app.route('/learoom',methods=['POST','GET'])
 @app.route('/learoom/',methods=['POST','GET'])
 def learoom():
@@ -41,7 +41,7 @@ def learoom():
 # 负责项目B的消息接受
 @app.route('/yhook',methods=['POST','GET'])
 @app.route('/yhook/',methods=['POST','GET'])
-def learoom():
+def yhook():
 
     if request.method == "GET":
         return "pelase use POST"
