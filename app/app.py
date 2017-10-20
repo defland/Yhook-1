@@ -45,7 +45,6 @@ def learoom():
 
 # 负责项目B的消息接受
 @app.route('/yhook',methods=['POST','GET'],strict_slashes=False)
-@app.route('/yhook/',methods=['POST','GET'],strict_slashes=False)
 def yhook():
 
     if request.method == "GET":
