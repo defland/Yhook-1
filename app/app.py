@@ -6,6 +6,7 @@ import commands,os
 
 # 全局变量
 DEV_PROJECT_PATH = '/Users/yg/Documents/code/Project/Yhook'
+D_PROJECT_PATH = '/Users/yg/Documents/code/Project/leanroom'
 WEB_PROJECT_PATH = '/home/yg/www/leanroom/'
 
 
@@ -30,7 +31,7 @@ def pull_code():
     # git reset --hard
     # git pull
 
-    comm = 'cd %s && git status' % DEV_PROJECT_PATH
+    comm = 'cd %s && git status' % D_PROJECT_PATH
     print comm
     (status, output) = commands.getstatusoutput(comm)
     print status, output
