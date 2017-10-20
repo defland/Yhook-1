@@ -18,6 +18,8 @@ SYSTEMD_PROJECT_A = 'learoom.service' # web网站项目的自启动服务名称
 SYSTEMD_PROJECT_B = 'yhook.service' # yhook的自启动服务名
 
 # 负责项目A的消息接受,webhook的路径 域名:端口/learoom
+@app.route('/',methods=['POST','GET'])
+@app.route('/index',methods=['POST','GET'])
 @app.route('/learoom',methods=['POST','GET'])
 @app.route('/learoom/',methods=['POST','GET'])
 def learoom():
@@ -29,12 +31,16 @@ def learoom():
     # print x
     # x = str(x)
     
+    print "pull code ing ...."
     # 拉取代码和重启web服务
     comm = 'cd %s && ls -l && git status && git reset --hard && git pull' % PROJECT_A_PATH
     pull_code(comm)
-    
+    print "pull code done!"
+
+    print "restart serve  ing ...."
     comm2 = 'sudo systemctl restart %s && sudo systemctl status %s'  % (SYSTEMD_PROJECT_A,SYSTEMD_PROJECT_A)
     restart_server(comm2)
+    print "restart serve done!"
 
     return 'Receive successful' 
 
