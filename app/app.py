@@ -41,7 +41,7 @@ def learoom():
     restart_server(comm2)
     print "restart serve done!"
 
-    return 'Receive successful' 
+    return 'Pull code and restart app done!' 
 
 # 负责项目B的消息接受
 @app.route('/yhook',methods=['POST','GET'],strict_slashes=False)
@@ -62,8 +62,7 @@ def yhook():
     comm2 = 'sudo systemctl restart %s && sudo systemctl status %s'  % (SYSTEMD_PROJECT_B,SYSTEMD_PROJECT_B) #  重启服务
     restart_server(comm2)
 
-    return 'Receive successful' 
-
+    return 'Pull code and restart app done!' 
 
 
 
@@ -91,5 +90,5 @@ def restart_server(comm=''):
 
 if __name__ == '__main__':
    
-    app.run()
+    app.run(DEBUG = True)
 
