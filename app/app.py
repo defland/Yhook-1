@@ -43,7 +43,7 @@ def learoom():
     restart_server(comm2)
     print "restart serve done!"
 
-    return '< Project: learoom >: Pull code and restart app done!' 
+    return '< Project: learoom_dev >: Pull code and restart app done!' 
 
 # 负责项目B的消息接受
 @app.route('/yhook',methods=['POST','GET'],strict_slashes=False)
@@ -68,7 +68,7 @@ def yhook():
 
 # 负责learoom项目正式服务的更新、重启
 @app.route('/ctl/<comm>',methods=['POST','GET'],strict_slashes=False)
-def stable(comm):
+def ctl(comm):
     # comm: git_updata,cp_update,restart,update_db,get_db,
     if request.method == "GET":
         return "Pelase use POST,<br> comm: git_updata,cp_update,restart,update_db,get_db"
@@ -96,7 +96,7 @@ def learoom_stable():
     restart_server(comm2)
     print "restart serve done!"
 
-    return '< Project: learoom >: Pull code and restart app done!' 
+    return '< Project: learoom_stable >: Pull code and restart app done!' 
 
 
 
