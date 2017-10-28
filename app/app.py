@@ -64,6 +64,18 @@ def yhook():
     return '< Project: yhook >: Pull code and restart app done!' 
 
 
+# 负责learoom项目正式服务的更新、重启
+@app.route('/stable/<comm>',methods=['POST','GET'],strict_slashes=False)
+def stable(comm):
+    # comm: git_updata,cp_update,restart,update_db,get_db,
+    if request.method == "GET":
+        return "Pelase use POST,<br> comm: git_updata,cp_update,restart,update_db,get_db"
+
+    
+
+
+
+
 
 # 拉取gitpull
 def pull_code(comm=''):
