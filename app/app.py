@@ -13,7 +13,7 @@ PROJECT_A_DEV_PATH = '/Users/yg/Documents/code/Project/learoom'
 PROJECT_B_PATH = '/home/yg/server/Yhook'
 PROJECT_B_DEV_PATH = '/Users/yg/Documents/code/Project/Yhook'
 
-PROJECT_STABLE_PATH = '/home/yg/www/v1/'
+PROJECT_STABLE_PATH = '/home/yg/www/learoom_stable/'
 
 SYSTEMD_PROJECT_A = 'learoom.service' # web网站项目的自启动服务名称
 SYSTEMD_PROJECT_B = 'yhook.service' # yhook的自启动服务名
@@ -67,16 +67,15 @@ def yhook():
 
 
 # 负责learoom项目正式服务的更新、重启
-@app.route('/stable/<comm>',methods=['POST','GET'],strict_slashes=False)
+@app.route('/ctl/<comm>',methods=['POST','GET'],strict_slashes=False)
 def stable(comm):
     # comm: git_updata,cp_update,restart,update_db,get_db,
     if request.method == "GET":
         return "Pelase use POST,<br> comm: git_updata,cp_update,restart,update_db,get_db"
 
 
-# 负责项目A的消息接受,webhook的路径 域名:端口/learoom
-
-@app.route('/v1',methods=['POST','GET'],strict_slashes=False)
+# 正式服务器
+@app.route('/stable',methods=['POST','GET'],strict_slashes=False)
 def learoom_stable():
 
     if request.method == "GET":
