@@ -13,9 +13,11 @@ PROJECT_A_DEV_PATH = '/Users/yg/Documents/code/Project/learoom'
 PROJECT_B_PATH = '/home/yg/server/Yhook'
 PROJECT_B_DEV_PATH = '/Users/yg/Documents/code/Project/Yhook'
 
+PROJECT_STABLE_PATH = '/home/yg/www/v1/'
 
 SYSTEMD_PROJECT_A = 'learoom.service' # web网站项目的自启动服务名称
 SYSTEMD_PROJECT_B = 'yhook.service' # yhook的自启动服务名
+SYSTEMD_PROJECT_STABLE = 'learoom_stable.service' # 稳定业务服务
 
 # 负责项目A的消息接受,webhook的路径 域名:端口/learoom
 @app.route('/',methods=['POST','GET'],strict_slashes=False)
@@ -71,8 +73,31 @@ def stable(comm):
     if request.method == "GET":
         return "Pelase use POST,<br> comm: git_updata,cp_update,restart,update_db,get_db"
 
-    
 
+# 负责项目A的消息接受,webhook的路径 域名:端口/learoom
+
+@app.route('/v1',methods=['POST','GET'],strict_slashes=False)
+def learoom_stable():
+
+    if request.method == "GET":
+        return "pelase use POST"
+
+    # x = request.form
+    # print x
+    # x = str(x)
+    
+    print "pull code ing ...."
+    # 拉取代码和重启web服务
+    comm = 'cd %s && ls -l && git status && git reset --hard && git pull' % PROJECT_STABLE_PATH
+    pull_code(comm)
+    print "pull code done!"
+
+    print "restart serve  ing ...."
+    comm2 = 'sudo systemctl restart %s && sudo systemctl status %s'  % (SYSTEMD_PROJECT_STABLE,SYSTEMD_PROJECT_STABLE)
+    restart_server(comm2)
+    print "restart serve done!"
+
+    return '< Project: learoom >: Pull code and restart app done!' 
 
 
 
