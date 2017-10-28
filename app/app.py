@@ -66,37 +66,37 @@ def yhook():
     return '< Project: yhook >: Pull code and restart app done!' 
 
 
-# 负责learoom项目正式服务的更新、重启
-@app.route('/ctl/<comm>',methods=['POST','GET'],strict_slashes=False)
-def ctl(comm):
-    # comm: git_updata,cp_update,restart,update_db,get_db,
-    if request.method == "GET":
-        return "Pelase use POST,<br> comm: git_updata,cp_update,restart,update_db,get_db"
+# # 负责learoom项目正式服务的更新、重启
+# @app.route('/ctl/<comm>',methods=['POST','GET'],strict_slashes=False)
+# def ctl(comm):
+#     # comm: git_updata,cp_update,restart,update_db,get_db,
+#     if request.method == "GET":
+#         return "Pelase use POST,<br> comm: git_updata,cp_update,restart,update_db,get_db"
 
 
 # 正式服务器
-@app.route('/stable',methods=['POST','GET'],strict_slashes=False)
-def learoom_stable():
+# @app.route('/stable',methods=['POST','GET'],strict_slashes=False)
+# def learoom_stable():
 
-    if request.method == "GET":
-        return "pelase use POST"
+#     if request.method == "GET":
+#         return "pelase use POST"
 
-    # x = request.form
-    # print x
-    # x = str(x)
+#     # x = request.form
+#     # print x
+#     # x = str(x)
     
-    print "pull code ing ...."
-    # 拉取代码和重启web服务
-    comm = 'cd %s && ls -l && git status && git reset --hard && git pull' % PROJECT_STABLE_PATH
-    pull_code(comm)
-    print "pull code done!"
+#     print "pull code ing ...."
+#     # 拉取代码和重启web服务
+#     comm = 'cd %s && ls -l && git status && git reset --hard && git pull' % PROJECT_STABLE_PATH
+#     pull_code(comm)
+#     print "pull code done!"
 
-    print "restart serve  ing ...."
-    comm2 = 'sudo systemctl restart %s && sudo systemctl status %s'  % (SYSTEMD_PROJECT_STABLE,SYSTEMD_PROJECT_STABLE)
-    restart_server(comm2)
-    print "restart serve done!"
+#     print "restart serve  ing ...."
+#     comm2 = 'sudo systemctl restart %s && sudo systemctl status %s'  % (SYSTEMD_PROJECT_STABLE,SYSTEMD_PROJECT_STABLE)
+#     restart_server(comm2)
+#     print "restart serve done!"
 
-    return '< Project: learoom_stable >: Pull code and restart app done!' 
+#     return '< Project: learoom_stable >: Pull code and restart app done!' 
 
 
 
